@@ -24,22 +24,57 @@ Player::Player()
     }
     
     forfeits = 0;
+    score = 0;
 }
 
 Player::~Player(){
 }
 
-void makeMove(Player& p, vector<int> diceResults, int number)
+void makeColorMove(Player& p, vector<int> diceResults, int number, char color)
 {
-    
-    
-    //todo Switch statement for what color row to edit.
-    //todo make if statement for colordice+whitedice
-    //todo implement rule to reject move if it is to the left a previus picked number (quixx rule)
-    
-    //bool validMove = true;
-    if(diceResults[0] + diceResults[1] == number && p.red[number - 2] != 0)
+    if(diceResults[0] + diceResults[2] == number || diceResults[1] + diceResults[2] == number || diceResults[0] + diceResults[3] == number || diceResults[1] + diceResults[3] == number || diceResults[0] + diceResults[4] == number || diceResults[1] + diceResults[4] == number || diceResults[0] + diceResults[5] == number || diceResults[1] + diceResults[5] == number)
     {
-        p.red[number -2] = 0;
+        if(color == 'r' && p.red[number - 2] != 0){
+            p.red[number -2] = 0;
+            p.score += 5;
+        }else{
+            p.forfeits ++;
+        }
+        if(color == 'y' && p.yellow[number - 2] != 0){
+            p.yellow[number -2] = 0;
+            p.score += 5;
+        }else{
+            p.forfeits ++;
+        }
+        if(color == 'g' && p.green[number - 2] != 0){
+            p.green[number -2] = 0;
+            p.score += 5;
+        }else{
+            p.forfeits ++;
+        }
+        if(color == 'b' && p.blue[number - 2] != 0){
+            p.blue[number -2] = 0;
+            p.score += 5;
+        }else{
+            p.forfeits ++;
+        }
+    }
+}
+
+void makeWhiteMove(Player& p, vector<int> diceResults, int number, char color){
+    if(diceResults[0] + diceResults[1] == number)
+    {
+        if(color == 'r' && p.red[number - 2] != 0){
+            p.red[number -2] = 0;
+        }
+        if(color == 'y' && p.yellow[number - 2] != 0){
+            p.yellow[number -2] = 0;
+        }
+        if(color == 'g' && p.green[number - 2] != 0){
+            p.green[number -2] = 0;
+        }
+        if(color == 'b' && p.blue[number - 2] != 0){
+            p.blue[number -2] = 0;
+        }
     }
 }
