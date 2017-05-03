@@ -33,5 +33,7 @@ void askColorMove(Player& p1, vector<int> diceResults);
 void askWhiteMove(Player& p1, vector<int> diceResults);
 void printDice(vector<int> diceResults);
 bool gameOver(Player p1, Player p2);
+int calculateScore(Player p);
+bool canPlaceMove(vector<int> vec, int number);
 
 #endif /* Player_hpp */

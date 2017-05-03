@@ -17,7 +17,7 @@ using namespace std;
 int main() {
     Player p1 = *new Player;
     Player p2 = *new Player;
-    cout << "Welcome to quixx.\n";
+    cout << "Welcome to quixx.\nForfeits are added when a user enters an invalid input.\nThe game ends when a player reaches 5 forfeits AND the current round ends.";
     vector<int> diceResults = rollDice();
     
     while(gameOver(p1, p2) == false){
@@ -31,7 +31,7 @@ int main() {
         askWhiteMove(p1, diceResults);
         cout << "\nYour result." << endl;
         printBoard(p1);
-        cout << endl;
+        cout << "\nYou have " << p1.forfeits <<" forfeits" <<endl;
         //player 2 picks from white dice
         cout << "\n\n\nPLAYER 2" << endl;
         printBoard(p2);
@@ -53,7 +53,7 @@ int main() {
         askWhiteMove(p2, diceResults);
         cout << "\nYour result." << endl;
         printBoard(p2);
-        cout << endl;
+        cout << "\nYou have " << p2.forfeits <<" forfeits" <<endl;
         //player 1 picks from white dice
         cout << "\n\n\nPLAYER 1" << endl;
         printBoard(p1);
@@ -64,7 +64,7 @@ int main() {
         printBoard(p1);
         cout << endl;
     }
-    cout << "Player 1 score: " << p1.score << "\nPlayer 2 score: " << p2.score << endl;
+    cout << "Player 1 score: " << calculateScore(p1) << "\nPlayer 2 score: " << calculateScore(p2) << endl;
     return 0;
 }
 
@@ -123,12 +123,14 @@ void printDice(vector<int> diceResults){
 }
 
 bool gameOver(Player p1, Player p2){
-    if(p1.score >= 5)
+    if(p1.forfeits >= 5)
     {
+        cout << "Player 1 has reached the maximum amount of foreits" << endl;
         return true;
     }
-    if(p2.score >= 5)
+    if(p2.forfeits >= 5)
     {
+        cout << "Player 2 has reached the maximum amount of foreits" << endl;
         return true;
     }
     return false;
