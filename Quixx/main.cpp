@@ -32,6 +32,7 @@ int main() {
         cout << "\nYour result." << endl;
         printBoard(p1);
         cout << "\nYou have " << p1.forfeits <<" forfeits" <<endl;
+        cout << "Player 1 score: " << calculateScore(p1) << "\nPlayer 2 score: " << calculateScore(p2) << endl;
         //player 2 picks from white dice
         cout << "\n\n\nPLAYER 2" << endl;
         printBoard(p2);
@@ -54,6 +55,7 @@ int main() {
         cout << "\nYour result." << endl;
         printBoard(p2);
         cout << "\nYou have " << p2.forfeits <<" forfeits" <<endl;
+        cout << "Player 1 score: " << calculateScore(p1) << "\nPlayer 2 score: " << calculateScore(p2) << endl;
         //player 1 picks from white dice
         cout << "\n\n\nPLAYER 1" << endl;
         printBoard(p1);
